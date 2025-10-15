@@ -27,7 +27,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 SESSION_COOKIE_SECURE = False if DEBUG else True
 SECURE_SSL_REDIRECT = False if DEBUG else True
 CSRF_COOKIE_SECURE = False if DEBUG else True
@@ -93,15 +93,10 @@ WSGI_APPLICATION = 'aula07.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': os.environ['DATABASE'],
-        'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'HOST': os.environ['HOST'],
-        'PORT': os.environ.get('PORT', 3306),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+        
+        
     }
 }
 
