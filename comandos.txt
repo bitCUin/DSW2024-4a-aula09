@@ -78,8 +78,8 @@ python manage.py runserver
 # Iniciar git #
 ###############
 git init
-git config --global user.name caiohamamura
-git config --global user.email caiohamamura@gmail.com
+git config --global user.name bitCUin
+git config --global user.email chiarini.luiz@aluno.ifsp.edu.br
 echo ".venv" >> .gitignore
 echo "__pycache__" >> .gitignore
 git add .

@@ -9,33 +9,33 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 from pathlib import Path
 from dotenv import load_dotenv
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
+import os
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-SESSION_COOKIE_SECURE = False if DEBUG else True
-SECURE_SSL_REDIRECT = False if DEBUG else True
-CSRF_COOKIE_SECURE = False if DEBUG else True
-SECURE_HSTS_SECONDS = 0 if DEBUG else 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False if DEBUG else True
-SECURE_HSTS_PRELOAD = False if DEBUG else True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'caiohamamuraIFSP.pythonanywhere.com']
+ALLOWED_HOSTS = [
+    'dsw2025-4a-aula09.onrender.com',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -94,9 +94,7 @@ WSGI_APPLICATION = 'aula07.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-        
-        
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -136,9 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS  = []
-
+STATICFILES_DIRS  = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
